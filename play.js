@@ -1,12 +1,10 @@
 const net = require("net");
 
 //returns the connect function from client.js //"require" the connect function
-const connect = require("./client");
+const {connect} = require("./client");
 
 console.log("Connecting ...");
 connect();
-
-// setup interface to handle user input from stdin
 
 const setupInput = function () {
   const stdin = process.stdin;
@@ -17,9 +15,11 @@ const setupInput = function () {
   return stdin;
 };
 
-//Added control+c input and terminate the game
-const handleUserInput = function () {
+const handleUserInput = function(key) {
+  //console.log("the entered key is", key);// works!
   if (key === '\u0003') {
     process.exit();
   }
 };
+
+setupInput();
